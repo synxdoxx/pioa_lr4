@@ -66,15 +66,20 @@ def projection(a, b):
         tuple1 += (0,) * (len(tuple2) - len(tuple1))
 
     data = set(zip(tuple1, tuple2))
-
+    print(data)
     result = set()
     for row in data:
         result.add(row[0])
     return result
 
-
 def join_sets(a, b):
-    return a & b
+    print(a, b)
+    result = set()
+    for l in a:
+        for r in b:
+            if l and r  and l[-1] == r[0]:
+                result.add(l + r[1:])
+    return result
 
 def division_sets(a, b):
     if not b:
@@ -164,4 +169,4 @@ def set_calculator(file1, file2):
             result = division_sets(set_a, set_b)
             print("Результат:", result)
 
-set_calculator('txt1.txt', 'txt2.txt')
+set_calculator('txt1', 'txt2')
